@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying BeatVecNet study."
+title: "BeatVecNet"
+type: software
+authors:
+  - family-names: "Magi"
+    given-names: "Shigeyuki"
+repository-code: "https://github.com/SHMAKI/beatvecnet"
+license: "MIT"

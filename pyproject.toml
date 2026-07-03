@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "beatvecnet"
+version = "0.1.0"
+description = "Implementation and executable sample workflow accompanying the BeatVecNet study."
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+where = ["src"]

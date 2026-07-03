@@ -1,0 +1,138 @@
+# Configuration record for the primary BeatVecNet model reported in the paper.
+# Fixed model and training values are taken from the study training code and
+# Supplementary Methods.
+# This file is a documentation record, not a drop-in replacement for
+# configs/sample.yaml. The complete study manifests, final checkpoint, and
+# fitted full-study channel-wise standardization values are not included.
+
+metadata:
+  purpose: reported_primary_model_configuration
+  documentation_only: true
+  public_sample_config: configs/sample.yaml
+  final_checkpoint_included: false
+  fitted_full_study_standardization_values_included: false
+
+data:
+  input_shape: [8, 500, 150]
+  n_classes: 4
+  class_names:
+    - control
+    - doxorubicin
+    - trastuzumab
+    - sunitinib
+  channel_layout:
+    vx: [0, 1, 2, 3]
+    vy: [4, 5, 6, 7]
+
+normalization:
+  day0_amplitude_normalization:
+    enabled: true
+    scope: per_well
+    beat_scale:
+      statistic: median
+      source: largest_5_percent_of_nonzero_motion_vector_magnitudes
+    well_scale:
+      statistic: median_across_day0_beats
+    application: divide_post_baseline_tensors_by_corresponding_day0_well_scale
+
+  channel_standardization:
+    enabled: true
+    scope: per_channel
+    statistics_source: training_split_only
+    variance_definition: population
+    fitted_values_included: false
+
+model:
+  architecture: two_branch_2d_cnn
+  input_channels: 8
+  n_output: 4
+
+  branches:
+    independent_weights: true
+    n_stages: 4
+    n_filters: [32, 16, 16, 32]
+    kernel_size: 7
+    padding: same
+    convolution_bias: false
+    normalization: group_normalization
+    group_norm_max_groups: 8
+    activation: ELU
+    pooling:
+      type: max_pool_2d
+      kernel_size: 2
+      stride: 2
+
+  fusion:
+    type: convolution
+    kernel_size: 7
+    followed_by: adaptive_global_average_pooling
+
+  classifier:
+    type: two_layer_mlp
+    hidden_dimension: 128
+    dropout_rate: 0.4
+    activation: ELU
+
+training:
+  train_batch_size: 32
+  validation_batch_size: 64
+  test_batch_size: 64
+
+  optimizer:
+    name: AdamW
+    learning_rate: 0.0001
+    weight_decay: 0.0005
+    beta1: 0.9
+    beta2: 0.999
+    epsilon: 0.00000001
+
+  scheduler:
+    name: none
+
+  loss:
+    name: cross_entropy
+    label_smoothing: 0.05
+
+  max_epochs: 200
+
+  mixed_precision:
+    enabled_on_cuda: true
+
+  gradient_clipping:
+    enabled: true
+    max_norm: 1.0
+
+  early_stopping:
+    enabled: true
+    monitor: validation_macro_f1
+    mode: max
+    patience: 20
+    delta: 0.0
+
+augmentation:
+  gaussian_noise:
+    enabled: false
+
+  temporal_shift:
+    enabled: true
+    maximum_shift_fraction: 0.05
+    application_probability: 0.5
+    boundary_fill: zero
+    circular_shift: false
+
+model_selection:
+  hyperparameters_initially_selected_by: Optuna
+  final_checkpoint_selection_metric: validation_macro_f1
+  external_test_set_used_for_model_selection: false
+
+evaluation:
+  primary_unit: well
+  probability_aggregation:
+    first: mean_across_beats_within_each_roi
+    second: mean_across_rois_within_each_well
+  prediction_rule: argmax_of_well_level_probability_vector
+  primary_metrics:
+    - accuracy
+    - macro_f1
+    - confusion_matrix
+  bootstrap_unit: well

@@ -1,0 +1,66 @@
+# Lightweight executable configuration for validating the public sample workflow.
+# This uses the public sample dataset and is not the final study configuration
+# used to generate the reported performance estimates.
+
+data:
+  manifest_path: data/sample/manifest.csv
+  repo_root: .
+  n_classes: 4
+  class_names: ["control", "doxorubicin", "trastuzumab", "sunitinib"]
+  in_ch: 8
+  size_y: 500
+  size_t: 150
+  mmap_mode: null
+  path_col: path
+
+standardization:
+  mode: fit_training_split
+  save_with_checkpoint: true
+
+augmentation:
+  temporal_shift:
+    enabled: true
+    maximum_shift_fraction: 0.05
+    application_probability: 0.5
+    boundary_fill: zero
+  gaussian_noise:
+    enabled: false
+
+model:
+  n_output: 4
+  n_layers: 4
+  kernel_size: 3
+  mid_units: 64
+  dropout_rate: 0.3
+  n_filters: [32, 16, 16, 32]
+  n_channel_in: 8
+
+optimizer:
+  name: AdamW
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  beta1: 0.9
+  beta2: 0.999
+  epsilon: 0.00000001
+
+train:
+  out_dir: outputs/sample
+  seed: 42
+  batch_size: 8
+  validation_batch_size: 8
+  epochs: 20
+  label_smoothing: 0.05
+  grad_clip_max_norm: 1.0
+  amp: auto
+  num_workers: 0
+  early_stopping:
+    enabled: true
+    monitor: validation_macro_f1
+    patience: 20
+    delta: 0.0
+
+test:
+  checkpoint: outputs/sample/best.pt
+  out_dir: outputs/sample_eval
+  batch_size: 8
+  class_names: ["control", "doxorubicin", "trastuzumab", "sunitinib"]

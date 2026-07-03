@@ -1,0 +1,14 @@
+# requirements_preprocess_gpu.txt
+
+opencv-python
+numpy
+pandas
+scipy
+matplotlib
+joblib
+tqdm
+PyYAML
+
+# Required for GPU preprocessing. Choose ONE depending on your CUDA:
+# cupy-cuda11x
+# cupy-cuda12x

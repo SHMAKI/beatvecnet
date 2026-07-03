@@ -1,0 +1,39 @@
+io:
+  input_dir: /path/to/input_dir
+  output_dir: /path/to/output_dir
+
+runtime:
+  opencv_num_threads: 8
+  parallel_njobs: 10
+
+video:
+  fps: 150.0
+  microm_per_pixel: "<set according to your imaging setup>" # optional; if left as text, velocity is reported in pixel/s
+
+roi:
+  ball_radius: 50
+  roi_width: 72
+  roi_height: 500
+  margin: 10
+  prominence_value: 1000
+  roi_ys: [100, 800, 1500]
+
+beat:
+  th_denoise_opt: 0.0316227766 # 10^-1.5
+  th_max_noise_ratio: 10 #SNR threshold for denoising
+  th_frame: 15
+  th_frame_inter: 15
+
+tensor:
+  size_x: 4
+  size_t: 150
+
+conv:
+  nt: 5
+  nx: 3
+  ny: 3
+
+artifacts:
+  save_artifacts: false
+  save_overlay_movies: false
+  save_raw_flow_xy: false

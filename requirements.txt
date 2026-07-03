@@ -1,0 +1,12 @@
+# requirements.txt (paper/main)
+
+# --- deep learning ---
+torch
+torchvision
+
+# --- core numerics / data ---
+numpy==1.26.4
+pandas==2.2.3
+scikit-learn==1.6.1
+matplotlib==3.10.1
+PyYAML==6.0.2

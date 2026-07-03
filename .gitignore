@@ -1,0 +1,74 @@
+# ------------------------------
+# Python
+# ------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ------------------------------
+# Virtual environments
+# ------------------------------
+.venv/
+venv/
+env/
+.env/
+.conda/
+
+# ------------------------------
+# Jupyter / IPython
+# ------------------------------
+.ipynb_checkpoints/
+
+# ------------------------------
+# Build / packaging
+# ------------------------------
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ------------------------------
+# Logs / temp
+# ------------------------------
+*.log
+tmp/
+temp/
+
+# ------------------------------
+# Training / evaluation outputs
+# ------------------------------
+outputs/
+runs/
+checkpoints/
+logs/
+wandb/
+
+# ------------------------------
+# OS / editor
+# ------------------------------
+.DS_Store
+Thumbs.db
+
+# ------------------------------
+# Claude Code local settings
+# ------------------------------
+.claude/
+
+# ------------------------------
+# Local raw/intermediate data
+# Keep public sample data tracked
+# ------------------------------
+data/raw/
+data/processed/
+data/intermediate/
+data/cache/
+
+# ------------------------------
+# Model checkpoints (if not publicly released)
+# ------------------------------
+*.pt
+*.pth
+*.ckpt
+
+# If you want to keep released sample/model artifacts tracked,
+# comment out the patterns above and store them under a dedicated directory.
