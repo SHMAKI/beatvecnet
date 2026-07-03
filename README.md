@@ -1,6 +1,14 @@
 # BeatVecNet
 
-This repository provides code for the BeatVecNet paper code-availability package.
+This repository provides the core implementation and executable sample workflow accompanying the BeatVecNet study.
+
+## Accompanying manuscript
+
+**BeatVecNet classifies drug-induced contractile phenotypes from beat-gated motion vectors in micropatterned human iPSC-derived cardiomyocytes**
+
+Shigeyuki Magi, Yasunari Kanda, and Atsuhiko T. Naito
+
+*British Journal of Pharmacology* — manuscript under revision.
 
 ## Scope
 
