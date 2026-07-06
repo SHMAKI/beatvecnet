@@ -10,6 +10,17 @@ Shigeyuki Magi, Yasunari Kanda, and Atsuhiko T. Naito
 
 *British Journal of Pharmacology* — manuscript under revision.
 
+# BeatVecNet
+
+BeatVecNet classifies drug-induced contractile phenotypes from beat-gated
+motion vectors in micropatterned human iPSC-derived cardiomyocytes.
+
+<p align="center">
+  <img src="assets/graphical_abstract.png"
+       alt="Overview of the BeatVecNet workflow"
+       width="900">
+</p>
+
 ## Scope
 
 This repository provides the core implementation of the motion-vector preprocessing and BeatVecNet model architecture used in the study, together with an executable sample training and evaluation workflow and a small sample dataset for code validation.
