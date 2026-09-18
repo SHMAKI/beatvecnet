@@ -8,7 +8,7 @@ This repository provides the core implementation and executable sample workflow 
 
 Shigeyuki Magi, Yasunari Kanda, and Atsuhiko T. Naito
 
-*British Journal of Pharmacology* — manuscript under revision.
+*British Journal of Pharmacology* in press.
 
 <p align="center">
   <img src="assets/graphical_abstract.png"
