@@ -4,11 +4,12 @@ This repository provides the core implementation and executable sample workflow 
 
 ## Accompanying manuscript
 
-**BeatVecNet classifies drug-induced contractile phenotypes from beat-gated motion vectors in micropatterned human iPSC-derived cardiomyocytes**
+**BeatVecNet classifies drug-induced contractile phenotypes from beat-gated motion vectors in micropatterned human induced pluripotent stem cell-derived cardiomyocytes**
 
 Shigeyuki Magi, Yasunari Kanda, and Atsuhiko T. Naito
 
-*British Journal of Pharmacology* in press.
+*British Journal of Pharmacology*  
+First published: 13 October 2026 https://doi.org/10.1111/bph.70710
 
 <p align="center">
   <img src="assets/graphical_abstract.png"
