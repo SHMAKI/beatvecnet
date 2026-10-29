@@ -7,3 +7,18 @@ authors:
     given-names: "Shigeyuki"
 repository-code: "https://github.com/SHMAKI/beatvecnet"
 license: "MIT"
+
+preferred-citation:
+  type: article
+  title: "BeatVecNet classifies drug-induced contractile phenotypes from beat-gated motion vectors in micropatterned human induced pluripotent stem cell-derived cardiomyocytes"
+  authors:
+    - family-names: "Magi"
+      given-names: "Shigeyuki"
+    - family-names: "Kanda"
+      given-names: "Yasunari"
+    - family-names: "Naito"
+      given-names: "Atsuhiko T."
+  journal: "British Journal of Pharmacology"
+  year: 2026
+  doi: "10.1111/bph.70710"
+  date-published: "2026-10-13"
